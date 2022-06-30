@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
-    "start": "npx nodemon back-end/app.js"
+    "server": "npx nodemon back-end/app.js",
+    "front-end": "cd front-end && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run front-end\""
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "mongoose": "^6.4.0"
   },
   "devDependencies": {
+    "concurrently": "^7.2.2",
     "nodemon": "^2.0.16"
   }
 }

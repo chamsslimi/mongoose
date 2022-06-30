@@ -1,6 +1,8 @@
 const Product=require('../models/Product')
 exports.addProduct=async(req,res)=>{
-    const {name,price,quantity,disponibility}=req.body;
+    let {name,price,quantity,disponibility}=req.body;
+    price=Number(price);
+    quantity=Number(quantity);
     try {
         //check product exists
         const found=await Product.findOne({name})
@@ -18,8 +20,8 @@ exports.addProduct=async(req,res)=>{
 }
 exports.getAllProducts=async(req,res)=>{
     try {
-       const  product=await Product.find();
-       res.status(200).send({msg:'all products',product});
+       const  products=await Product.find();
+       res.status(200).send({msg:'all products',products});
     } catch (error) {
         res.status(500).send('server error'); 
         
